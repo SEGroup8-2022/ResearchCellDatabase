@@ -1,16 +1,16 @@
 @import '~purecss/build/pure-min.css';
 @import '~purecss/build/grids-responsive-min.css';
 
-@import './theme.scss';
-@import './animations.scss';
+@import './utils/theme.scss';
+@import './utils/animations.scss';
+
+@import './components/form.scss';
+@import './components/navbar.scss';
+@import './components/table.scss';
 
 @import './general.scss';
-@import './navbar.scss';
-@import './form.scss';
-@import './navbar.scss';
-@import './table.scss';
 
-@import './responsive-queries.scss';
+@import './responsive/queries.scss';
 
 div.app {
   main {
