@@ -1,0 +1,18 @@
+form.paper-details {
+  label {
+    color: color-get('label-fg');
+  }
+  fieldset {
+    div.pure-controls {
+      margin: 1.5em 0 0 0.5em;
+    }
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+  }
+  button#submit {
+    background-color: color-get('button-bg');
+    color: color-get('button-fg')
+  }
+}
+

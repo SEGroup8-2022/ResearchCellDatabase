@@ -1,0 +1,17 @@
+@media (min-width: 48em) {
+
+  .nav-content {
+    ul { float: right; }
+    a { float: left; }
+    text-align: left;
+  }
+
+}
+
+@media (min-width: 32em) {
+
+  hr {
+    max-width: calc(250px + 20%);
+  }
+
+}

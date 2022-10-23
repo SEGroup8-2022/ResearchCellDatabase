@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  color: color-get('heading-fg');
+  text-align: center;
+}
+
+hr {
+  color: color-get('hr');
+  max-width: 100%;
+  margin-bottom: 1.2em;
+}
+

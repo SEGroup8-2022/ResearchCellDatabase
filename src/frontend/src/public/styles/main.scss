@@ -4,20 +4,13 @@
 @import './theme.scss';
 @import './animations.scss';
 
-* {
-  box-sizing: border-box;
-}
+@import './general.scss';
+@import './navbar.scss';
+@import './form.scss';
+@import './navbar.scss';
+@import './table.scss';
 
-h1, h2, h3 {
-  color: color-get('heading-fg');
-  text-align: center;
-}
-
-hr {
-  color: color-get('hr');
-  max-width: 100%;
-  margin-bottom: 1.2em;
-}
+@import './responsive-queries.scss';
 
 div.app {
   main {
@@ -30,91 +23,8 @@ div.app {
   min-height: 100vh;
 }
 
-.pure-menu.pure-menu-fixed {
-  border: none;
-  z-index: 4;
-}
-
-form.paper-details {
-  button#submit {
-    background-color: color-get('button-bg');
-    color: color-get('button-fg')
-  }
-  fieldset {
-    div.pure-controls {
-      margin: 1.5em 0 0 0.5em;
-    }
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-  }
-}
-
-label {
-  color: color-get('label-fg');
-}
-
-.nav-content {
-  .pure-menu-heading {
-    color: color-get('menu-heading');
-  }
-  li.pure-menu-item.pure-menu-selected a {
-    &, &:visited, &:visited:hover {
-      color: color-get('menu-link-selected');
-    }
-  }
-  li.pure-menu-item a {
-    &, &:visited {
-      color: color-get('menu-link');
-    }
-    &:hover, &:visited:hover {
-      color: color-get('menu-link-hover');
-    }
-  }
-  li a {
-    &:focus, &:hover {
-      border: none;
-      background: none;
-    }
-  }
-  height: 50px;
-  padding: 0.5em;
-  text-align: center;
-  background: color-get('nav-bg');
-}
-
-.nav-underline {
-  height: 5px;
-  background-color: color-get('nav-underline');
-}
-
 div.main-content {
   overflow: scroll;
   margin: auto;
 }
 
-table.publication-records {
-  thead {
-    color: color-get('main-fg');
-  }
-  margin: auto;
-}
-
-@media (min-width: 48em) {
-
-  .nav-content {
-    ul {
-      float: right;
-    }
-    text-align: left;
-  }
-
-}
-
-@media (min-width: 32em) {
-
-  hr {
-    max-width: calc(250px + 20%);
-  }
-
-}

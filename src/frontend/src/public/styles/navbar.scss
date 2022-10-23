@@ -1,0 +1,34 @@
+div.nav-content {
+  a.pure-menu-heading {
+    color: color-get('menu-heading');
+  }
+  li.pure-menu-item.pure-menu-selected a {
+    &, &:visited, &:visited:hover {
+      color: color-get('menu-link-selected');
+    }
+  }
+  li.pure-menu-item a {
+    &, &:visited {
+      color: color-get('menu-link');
+    }
+    &:hover, &:visited:hover {
+      color: color-get('menu-link-hover');
+    }
+  }
+  li a {
+    &:focus, &:hover {
+      border: none;
+      background: none;
+    }
+  }
+  height: 50px;
+  padding: 0.5em;
+  text-align: center;
+  background: color-get('nav-bg');
+}
+
+div.nav-underline {
+  height: 5px;
+  background-color: color-get('nav-underline');
+}
+
