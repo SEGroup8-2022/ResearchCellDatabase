@@ -17,20 +17,20 @@ export default class App implements RedomComponent {
     el = el('div.app', this.navBar, this.viewRouter);
 
     setView(pageName: RouteName) {
-        this.viewRouter.update(pageName);
         this.navBar.setSelectedLink(pageName);
+        this.viewRouter.update(pageName);
     }
 
-    onmount() {
+    async onmount() {
+        await new Promise(resolve => setTimeout(resolve, 500));
         this.setView('browse');
     }
 
     constructor() {
-        this.navBar.browseButton.addEventListener('click', _event => {
-            this.setView('browse');
-        });
-        this.navBar.submitButton.addEventListener('click', _event => {
-            this.setView('submit');
+        Object.keys(this.navBar.buttons).forEach((key: RouteName) => {
+            this.navBar.buttons[key].addEventListener('click', _event => {
+                this.setView(key);
+            });
         });
     }
 

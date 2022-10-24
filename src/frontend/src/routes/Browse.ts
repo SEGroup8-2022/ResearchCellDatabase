@@ -2,6 +2,8 @@ import { el, mount } from 'redom';
 
 import Page from './Page';
 
+import { Record } from '../constants';
+
 export default class Browse extends Page {
 
     thead = el('thead',
@@ -18,21 +20,34 @@ export default class Browse extends Page {
         this.tbody);
     el = el('div.main-content.pure-u-1-1.pure-u-md-4-5', this.table);
 
-    constructor() {
-        super();
-        const records = [
-            [1235, "Kunal", "kunal@example.com", "C++ Application", "Tannennbaum", 2020],
-            [1230, "ARC", "arc@example.com", "Low Level Audio Processing", "Acoustics", 2021]
-        ];
-        
-        const rows = records.map(rowData => el('tr',
-           ...rowData.map(cellData =>
+    addRow(record: Record) {
+        mount(this.tbody, el('tr',
+           ...record.map(cellData =>
                el('td', cellData.toString())
            )
         ));
+    }
 
-        rows.forEach(row => mount(this.tbody, row));
+    async onmount() {
+
+        this.el.style.opacity = '0';
+
+        try {
+
+            const response = await fetch("/records");
+            const records: Record[] = await response.json();
+
+            records.forEach(record => this.addRow(record));
+
+        } catch(e) {
+            console.error("Error fetching records!");
+        }
+
+        this.el.style.opacity = '1';
+
+        super.onmount();
 
     }
+
 }
 

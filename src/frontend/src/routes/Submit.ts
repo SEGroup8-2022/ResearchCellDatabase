@@ -29,8 +29,5 @@ export default class Submit extends Page {
             el('button.pure-button.pure-button-primary', {type: 'submit', id: 'submit'}, "Submit"))));
     el = el('div.main-content.pure-u-1-1.pure-u-md-4-5', this.heading, el('hr'), this.form);
 
-    constructor() {
-        super();
-    }
 }
 
