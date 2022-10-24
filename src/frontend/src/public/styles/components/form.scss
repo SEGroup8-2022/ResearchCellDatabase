@@ -14,5 +14,8 @@ form.paper-details {
     background-color: color-get('button-bg');
     color: color-get('button-fg')
   }
+  input.invalid {
+    border-color: #ea1212;
+  }
 }
 

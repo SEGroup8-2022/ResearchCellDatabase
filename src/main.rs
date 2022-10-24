@@ -2,11 +2,12 @@ mod db_driver;
 mod models;
 mod schema;
 
-use db_driver::fetch_records;
+use db_driver::{fetch_records, insert_record};
 use rocket::response::content::{RawHtml, RawJavaScript};
 use rocket::response::Responder;
 use rocket::serde::json::serde_json::json;
-use rocket::serde::json::Value as JsonValue;
+use rocket::serde::json::{Value as JsonValue, Json};
+use serde::Deserialize;
 
 #[macro_use]
 extern crate rocket;
@@ -14,6 +15,17 @@ extern crate rocket;
 static INDEX_HTML: &str = include_str!("./frontend/build/index.html");
 static MAIN_JS: &str = include_str!("./frontend/build/main.js");
 static FAVICON_ICO: &[u8] = include_bytes!("./frontend/build/favicon.ico");
+
+#[allow(non_snake_case)]
+#[derive(Debug, PartialEq, Eq, Deserialize)]
+pub struct PaperInput {
+    pub employeeId: String,
+    pub employeeName: String,
+    pub email: String,
+    pub paperTitle: String,
+    pub journal: String,
+    pub publicationYear: i32,
+}
 
 #[derive(Responder)]
 #[response(status = 200, content_type = "image/x-icon")]
@@ -57,6 +69,25 @@ fn records_handler() -> JsonValue {
     records_json
 }
 
+#[post("/newpaper", format = "json", data = "<paper_input>")]
+fn newpaper_handler(paper_input: Json<PaperInput>) -> JsonValue {
+
+    insert_record(
+        &paper_input.employeeId,
+        &paper_input.employeeName,
+        &paper_input.email,
+        &paper_input.paperTitle,
+        &paper_input.journal,
+        paper_input.publicationYear
+    );
+
+    json!({
+        "success": true,
+        "message": "New record successfully inserted!"
+    })
+
+}
+
 #[launch]
 fn rocket() -> _ {
     rocket::build().mount(
@@ -66,7 +97,8 @@ fn rocket() -> _ {
             index_handler,
             script_handler,
             favicon_handler,
-            records_handler
+            records_handler,
+            newpaper_handler
         ],
     )
 }
