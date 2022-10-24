@@ -18,7 +18,8 @@ export default class Browse extends Page {
     table = el('table.pure-table.pure-table-bordered.publication-records',
         this.thead,
         this.tbody);
-    el = el('div.main-content.pure-u-1-1.pure-u-md-4-5', this.table);
+    container = el('div.table-container', this.table)
+    el = el('div.main-content.pure-u-1-1.pure-u-md-4-5', this.container);
 
     addRow(record: Record) {
         mount(this.tbody, el('tr',

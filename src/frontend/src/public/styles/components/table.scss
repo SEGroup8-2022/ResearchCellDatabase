@@ -1,7 +1,21 @@
 table.publication-records {
   thead {
     color: color-get('main-fg');
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
   }
+
+  thead, tbody {
+    text-align: center;
+  }
+  width: 100%;
+}
+
+div.table-container {
+  overflow: scroll;
+  max-width: 1010px;
+  max-height: calc(100vh - 55px);
   margin: auto;
 }
 
