@@ -4,21 +4,21 @@ use diesel::prelude::*;
 #[derive(Queryable)]
 pub struct Record {
     pub id: i32,
-    pub employeeId: String,
-    pub employeeName: String,
+    pub employee_id: String,
+    pub employee_name: String,
     pub email: String,
-    pub paperTitle: String,
+    pub paper_title: String,
     pub journal: String,
-    pub publicationYear: i32,
+    pub publication_year: i32,
 }
 
 #[derive(Insertable)]
 #[diesel(table_name = papers)]
 pub struct NewRecord<'a> {
-    pub employeeId: &'a str,
-    pub employeeName: &'a str,
+    pub employee_id: &'a str,
+    pub employee_name: &'a str,
     pub email: &'a str,
-    pub paperTitle: &'a str,
+    pub paper_title: &'a str,
     pub journal: &'a str,
-    pub publicationYear: i32,
+    pub publication_year: i32,
 }

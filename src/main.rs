@@ -45,12 +45,12 @@ fn records_handler() -> JsonValue {
 
     for record in fetch_records() {
         records_json.as_array_mut().unwrap().push(json!([
-            record.employeeId,
-            record.employeeName,
+            record.employee_id,
+            record.employee_name,
             record.email,
-            record.paperTitle,
+            record.paper_title,
             record.journal,
-            record.publicationYear
+            record.publication_year
         ]));
     }
 

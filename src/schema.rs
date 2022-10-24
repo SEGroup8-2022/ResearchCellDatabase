@@ -3,11 +3,11 @@
 diesel::table! {
     papers (_id) {
         _id -> Integer,
-        employeeId -> Text,
-        employeeName -> Text,
+        employee_id -> Text,
+        employee_name -> Text,
         email -> Text,
-        paperTitle -> Text,
+        paper_title -> Text,
         journal -> Text,
-        publicationYear -> Integer,
+        publication_year -> Integer,
     }
 }

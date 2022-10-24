@@ -24,12 +24,12 @@ pub fn fetch_records() -> Vec<Record> {
 }
 
 pub fn insert_record(
-    employeeId: &str,
-    employeeName: &str,
+    employee_id: &str,
+    employee_name: &str,
     email: &str,
-    paperTitle: &str,
+    paper_title: &str,
     journal: &str,
-    publicationYear: i32
+    publication_year: i32
 ) {
 
     use self::schema::papers::dsl::papers;
@@ -37,12 +37,12 @@ pub fn insert_record(
     let connection = &mut establish_connection();
 
     let new_record = NewRecord {
-        employeeId,
-        employeeName,
+        employee_id,
+        employee_name,
         email,
-        paperTitle,
+        paper_title,
         journal,
-        publicationYear
+        publication_year
     };
 
     insert_into(papers)
