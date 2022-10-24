@@ -2,7 +2,7 @@ div.nav-content {
   a.pure-menu-heading {
     color: color-get('menu-heading');
   }
-  li.pure-menu-item.pure-menu-selected a {
+  li.pure-menu-item.pure-menu-selected a.pure-menu-link {
     &, &:visited, &:visited:hover {
       color: color-get('menu-link-selected');
     }
