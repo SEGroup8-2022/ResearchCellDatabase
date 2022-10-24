@@ -1,0 +1,8 @@
+[tasks.build-frontend]
+command = "npm"
+args = ["--prefix", "src/frontend", "run", "build"]
+
+[tasks.build]
+command = "cargo"
+args = ["build", "--release"]
+dependencies = ["build-frontend"]
