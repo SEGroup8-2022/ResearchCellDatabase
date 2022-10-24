@@ -1,8 +1,13 @@
-[tasks.build-frontend]
+[tasks.frontend-install-deps]
+command = "npm"
+args = ["--prefix", "src/frontend", "install"]
+
+[tasks.frontend-build]
 command = "npm"
 args = ["--prefix", "src/frontend", "run", "build"]
+dependencies = ["frontend-install-deps"]
 
 [tasks.build]
 command = "cargo"
 args = ["build", "--release"]
-dependencies = ["build-frontend"]
+dependencies = ["frontend-build"]
