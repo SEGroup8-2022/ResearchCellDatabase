@@ -3,18 +3,14 @@ mod models;
 mod schema;
 
 use db_driver::{fetch_records, insert_record};
-use rocket::response::content::{RawHtml, RawJavaScript};
-use rocket::response::Responder;
 use rocket::serde::json::serde_json::json;
 use rocket::serde::json::{Value as JsonValue, Json};
 use serde::Deserialize;
+use std::path::{Path, PathBuf};
+use rocket::fs::NamedFile;
 
 #[macro_use]
 extern crate rocket;
-
-static INDEX_HTML: &str = include_str!("./frontend/build/index.html");
-static MAIN_JS: &str = include_str!("./frontend/build/main.js");
-static FAVICON_ICO: &[u8] = include_bytes!("./frontend/build/favicon.ico");
 
 #[allow(non_snake_case)]
 #[derive(Debug, PartialEq, Eq, Deserialize)]
@@ -27,28 +23,14 @@ pub struct PaperInput {
     pub publicationYear: i32,
 }
 
-#[derive(Responder)]
-#[response(status = 200, content_type = "image/x-icon")]
-struct Favicon(&'static [u8]);
-
 #[get("/")]
-fn root_handler() -> RawHtml<&'static str> {
-    RawHtml(INDEX_HTML)
+async fn index_handler() -> Option<NamedFile> {
+    NamedFile::open(Path::new("./src/frontend/build/index.html")).await.ok()
 }
 
-#[get("/index.html")]
-fn index_handler() -> RawHtml<&'static str> {
-    RawHtml(INDEX_HTML)
-}
-
-#[get("/main.js")]
-fn script_handler() -> RawJavaScript<&'static str> {
-    RawJavaScript(MAIN_JS)
-}
-
-#[get("/favicon.ico")]
-fn favicon_handler() -> Favicon {
-    Favicon(FAVICON_ICO)
+#[get("/<file..>")]
+async fn files_handler(file: PathBuf) -> Option<NamedFile> {
+    NamedFile::open(Path::new("./src/frontend/build/").join(file)).await.ok()
 }
 
 #[get("/records")]
@@ -93,10 +75,8 @@ fn rocket() -> _ {
     rocket::build().mount(
         "/",
         routes![
-            root_handler,
             index_handler,
-            script_handler,
-            favicon_handler,
+            files_handler,
             records_handler,
             newpaper_handler
         ],
