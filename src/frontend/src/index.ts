@@ -5,5 +5,5 @@ import './public/assets/favicon.ico';
 import App from './App';
 
 window.addEventListener('load', _event => {
-    mount(document.body, new App())
+    mount(document.body, new App());
 });

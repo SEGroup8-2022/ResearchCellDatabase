@@ -11,7 +11,7 @@ export default class NavBar implements RedomComponent {
     buttons = {
         browse: el('a.pure-menu-link.link-home', {href: '#browse'}, 'Browse'),
         submit: el('a.pure-menu-link.link-login', {href: '#submit'}, 'Submit')
-    }
+    };
     underline = el('div.nav-underline');
     el = el('nav',
         el('div.nav-content.pure-menu.pure-menu-horizontal',
