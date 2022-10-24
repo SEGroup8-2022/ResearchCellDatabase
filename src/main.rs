@@ -1,9 +1,15 @@
-use rocket::response::content::{RawHtml, RawJavaScript, RawJson};
+mod db_driver;
+mod models;
+mod schema;
+
+use db_driver::fetch_records;
+use rocket::response::content::{RawHtml, RawJavaScript};
 use rocket::response::Responder;
+use rocket::serde::json::serde_json::json;
+use rocket::serde::json::Value as JsonValue;
 
-use rocket::serde::json;
-
-#[macro_use] extern crate rocket;
+#[macro_use]
+extern crate rocket;
 
 static INDEX_HTML: &str = include_str!("./frontend/build/index.html");
 static MAIN_JS: &str = include_str!("./frontend/build/main.js");
@@ -34,20 +40,33 @@ fn favicon_handler() -> Favicon {
 }
 
 #[get("/records")]
-fn records_handler() -> RawJson<&'static str> {
+fn records_handler() -> JsonValue {
+    let mut records_json = json!([]);
 
-    RawJson("[[1235,\"Kunal\",\"kunal@example.com\",\"C++ Application\",\"Tannennbaum\",2020],[1230,\"ARC\",\"arc@example.com\",\"Low Level Audio Processing\",\"Acoustics\",2021]]")
+    for record in fetch_records() {
+        records_json.as_array_mut().unwrap().push(json!([
+            record.employeeId,
+            record.employeeName,
+            record.email,
+            record.paperTitle,
+            record.journal,
+            record.publicationYear
+        ]));
+    }
 
+    records_json
 }
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![
-        root_handler,
-        index_handler,
-        script_handler,
-        favicon_handler,
-        records_handler
-    ])
+    rocket::build().mount(
+        "/",
+        routes![
+            root_handler,
+            index_handler,
+            script_handler,
+            favicon_handler,
+            records_handler
+        ],
+    )
 }
-
