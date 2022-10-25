@@ -1,0 +1,9 @@
+div.loading {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  width: 100px;
+  min-height: 100px;
+  align-items: center;
+  margin: auto;
+}

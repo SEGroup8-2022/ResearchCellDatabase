@@ -13,3 +13,9 @@ hr {
   margin-bottom: 1.2em;
 }
 
+div.container {
+  max-width: 1010px;
+  max-height: calc(100vh - 55px);
+  margin: auto;
+}
+

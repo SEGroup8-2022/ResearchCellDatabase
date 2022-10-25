@@ -73,7 +73,8 @@ export default class Submit extends Page {
             el('label', {for: 'publication-year'}, "Publication Year"),
             this.inputs.publicationYear),
           el('div.pure-controls', this.buttons.submit))) as HTMLFormElement;
-    el = el('div.main-content.pure-u-1-1.pure-u-md-4-5', this.heading, el('hr'), this.form);
+    container = el('div.form-container.container', this.heading, el('hr'), this.form);
+    el = el('div.main-content.pure-u-1-1.pure-u-md-4-5', this.container);
 
     constructor() {
         super();
