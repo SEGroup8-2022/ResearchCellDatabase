@@ -72,8 +72,34 @@ The frontend is a standard typescript app which fetches data from the backend at
 
 # Building and Setting Up
 
-> This section is under construction
+> NOTE: It is assumed that all the dependencies are properly setup on your system.
 
-# SRS and DFD Documents
+Setting up this project is very simple, and it should be up and running with just a few steps:
 
-> Links to be added soon
+1. Clone the repository
+
+    `$ git clone https://github.com/ArneshRC/ResearchCellDatabase`
+
+2. Enter the new directory
+
+    `$ cd ResearchCellDatabase`
+
+3. Setup the database (with diesel-cli)
+    - Create the database
+    
+        `$ diesel setup`
+    - Create the table
+    
+        `$ diesel migration run`
+    
+4. Build the project (including the frontend)
+
+    `$ cargo make build`
+
+5. Run the project
+
+    `$ cargo run --release`
+
+# SRS Document
+
+> Link to be added soon
