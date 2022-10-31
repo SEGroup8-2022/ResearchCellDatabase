@@ -101,7 +101,7 @@ export default class Submit extends Page {
                 return;
             }
 
-            const response = await fetch("/newpaper", {
+            const response = await fetch("/api/newpaper", {
                 method: 'POST',
                 body: JSON.stringify({
                     employeeId: this.inputs.employeeId.value,

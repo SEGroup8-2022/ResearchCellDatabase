@@ -72,7 +72,7 @@ export default class Browse extends Page {
 
         try {
 
-            const response = await fetch("/records");
+            const response = await fetch("/api/records");
             const records: Record[] = await response.json();
 
             records.forEach(record => this.addRow(record));

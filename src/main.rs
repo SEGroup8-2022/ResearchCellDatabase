@@ -33,7 +33,7 @@ async fn files_handler(file: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("./src/frontend/build/").join(file)).await.ok()
 }
 
-#[get("/records")]
+#[get("/api/records")]
 fn records_handler() -> JsonValue {
     let mut records_json = json!([]);
 
@@ -51,7 +51,7 @@ fn records_handler() -> JsonValue {
     records_json
 }
 
-#[post("/newpaper", format = "json", data = "<paper_input>")]
+#[post("/api/newpaper", format = "json", data = "<paper_input>")]
 fn newpaper_handler(paper_input: Json<PaperInput>) -> JsonValue {
 
     insert_record(
