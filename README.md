@@ -83,8 +83,12 @@ Setting up this project is very simple, and it should be up and running with jus
 2. Enter the new directory
 
     `$ cd ResearchCellDatabase`
+    
+3. Create a new directory for the database
 
-3. Setup the database (with diesel-cli)
+    `$ mkdir databases`
+
+4. Setup the database (with diesel-cli)
     - Create the database
     
         `$ diesel setup`
@@ -92,11 +96,11 @@ Setting up this project is very simple, and it should be up and running with jus
     
         `$ diesel migration run`
     
-4. Build the project (including the frontend)
+5. Build the project (including the frontend)
 
     `$ cargo make build`
 
-5. Run the project
+6. Run the project
 
     `$ cargo run --release`
 
