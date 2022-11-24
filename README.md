@@ -78,7 +78,7 @@ Setting up this project is very simple, and it should be up and running with jus
 
 1. Clone the repository
 
-    `$ git clone https://github.com/ArneshRC/ResearchCellDatabase`
+    `$ git clone https://github.com/SEGroup8-2022/ResearchCellDatabase`
 
 2. Enter the new directory
 
